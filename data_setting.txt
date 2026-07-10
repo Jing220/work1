@@ -1,0 +1,125 @@
+F:\Dataset\BurstSR\burstSR_data\realburstsr
+root/  # 环境设置中的rbsr_dir
+├── RGB/
+│   ├── train/
+│   │   ├── LR_aligned/  # 当aligned=True时使用
+│   │   │   ├── burst_0001_0001/  # burst文件夹，格式: burst_序号_序号
+│   │   │   │   ├── xxx_MFSR_Sony_0001_x1_01.png
+│   │   │   │   ├── xxx_MFSR_Sony_0001_x1_02.png
+│   │   │   │   ├── ...
+│   │   │   │   └── xxx_MFSR_Sony_0001_x1_14.png  # 14帧LR图像
+│   │   │   └── ... (其他burst文件夹)
+│   │   │
+│   │   └── trainpatch/  # 当aligned=False时使用
+│   │       ├── burst_0001_0001/
+│   │       │   ├── xxx_MFSR_Sony_0001_x1_01.png
+│   │       │   ├── ... (同上)
+│   │       │   ├── xxx_MFSR_Sony_0001_x1_14.png
+│   │       │   └── xxx_MFSR_Sony_0001_x4warp.png  # HR图像
+│   │       └── ... (其他burst文件夹)
+│   │
+│   └── test/  # 注意：val被重命名为test
+│       ├── LR_aligned/
+│       └── testpatch/
+│           └── ... (同上结构)
+│
+└── RAW/
+    ├── trainpatch_aligned/  # 当mode='RAW'且aligned=True时
+    │   ├── burst_0001_0001/
+    │   │   ├── xxx_MFSR_Sony_0001_x1_01.png
+    │   │   ├── ... (同上)
+    │   │   ├── xxx_MFSR_Sony_0001_x1_14.png
+    │   │   └── MFSR_Sony_0001_x4.pkl  # meta文件
+    │   └── ... (其他burst文件夹)
+    │
+    ├── trainpatch/  # 当mode='RAW'且aligned=False时
+    │   ├── burst_0001_0001/
+    │   │   ├── xxx_MFSR_Sony_0001_x1_01.png
+    │   │   ├── ... (同上)
+    │   │   ├── xxx_MFSR_Sony_0001_x1_14.png
+    │   │   ├── xxx_MFSR_Sony_0001_x4_rgb.png  # HR图像
+    │   │   └── MFSR_Sony_0001_x4.pkl  # meta文件
+    │   └── ... (其他burst文件夹)
+    │
+    └── testpatch/  # 测试集
+        └── ... (同上结构)
+
+
+F:\Dataset\BurstSR\burstSR_data\burstsr
+root/  # 环境设置中的burstsr_dir
+├── train/
+│   ├── 0001_0000/  # 序列ID，4位数字
+│   │   ├── samsung_01/  # 三星RAW图像，第一帧
+│   │   │   ├── im_raw.png  # RAW图像文件
+│   │   │   └── meta_info.pkl  # 元数据文件
+│   │   ├── samsung_02/
+│   │   │   ├── im_raw.png
+│   │   │   └── meta_info.pkl
+│   │   ├── ...
+│   │   ├── samsung_14/  # 第14帧
+│   │   │   ├── im_raw.png
+│   │   │   └── meta_info.pkl
+│   │   └── canon/  # 佳能GT图像
+│   │       ├── im_raw.png
+│   │       └── meta_info.pkl
+│   ├── 0002/
+│   │   ├── samsung_01/
+│   │   ├── ...
+│   │   ├── samsung_14/
+│   │   └── canon/
+│   └── ... (其他序列)
+│
+└── val/  # 验证集
+    ├── 0003_0000/
+    │   ├── samsung_01/
+    │   ├── ...
+    │   ├── samsung_14/
+    │   └── canon/
+    └── ... (其他序列)
+
+合成集
+F:\Dataset\BurstSR\burstSR_data\synthetic\SyntheticBurstVal
+root/  # 环境设置中的synburstval_dir
+├── bursts/
+│   ├── 0000/  # 第一个burst序列，索引为0
+│   │   ├── im_raw_00.png  # 第0帧RAW图像
+│   │   ├── im_raw_01.png
+│   │   ├── ...
+│   │   └── im_raw_13.png  # 第13帧（共14帧）
+│   ├── 0001/
+│   │   ├── im_raw_00.png
+│   │   ├── ...
+│   │   └── im_raw_13.png
+│   ├── ...
+│   └── 0299/  # 第300个burst序列（索引299）
+│       ├── im_raw_00.png
+│       ├── ...
+│       └── im_raw_13.png
+│
+└── gt/
+    ├── 0000/  # 第一个burst序列的GT
+    │   ├── im_rgb.png  # 对应的GT图像（RGB格式）
+    │   └── meta_info.pkl  # 元数据文件
+    ├── 0001/
+    │   ├── im_rgb.png
+    │   └── meta_info.pkl
+    ├── ...
+    └── 0299/
+        ├── im_rgb.png
+        └── meta_info.pkl
+
+F:\Dataset\BurstSR\burstSR_data\synthetic\zurich-raw-to-rgb
+
+├── train/
+│   └── canon/
+│       ├── 0.jpg
+│       ├── 1.jpg
+│       ├── ...
+│       └── 46838.jpg  # 共46839张训练图像
+│
+└── test/
+    └── canon/
+        ├── 0.jpg
+        ├── 1.jpg
+        ├── ...
+        └── 1203.jpg   # 共1204张测试图像
